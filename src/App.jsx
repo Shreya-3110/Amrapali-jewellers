@@ -13,6 +13,7 @@ import ShopByCategory from './components/ShopByCategory';
 import FluidPromoBanner from './components/FluidPromoBanner';
 import FeaturedCollections from './components/FeaturedCollections';
 import GemstoneCollection from './components/GemstoneCollection';
+import LiveGemstoneReels from './components/LiveGemstoneReels';
 import GoldSilverDiamondCollage from './components/GoldSilverDiamondCollage';
 import NewArrivals from './components/NewArrivals';
 import BestSellers from './components/BestSellers';
@@ -101,7 +102,10 @@ export default function App() {
               onOpenRecommendation={() => setIsRecommendationOpen(true)}
             />
 
-            {/* 10. Gold, Silver & Diamond Showroom Collage Section (Showroom Walk-in Feature) */}
+            {/* 10. Live Gemstone Video Showcase (4K Live Showroom Videos) */}
+            <LiveGemstoneReels />
+
+            {/* 11. Gold, Silver & Diamond Showroom Collage Section (Showroom Walk-in Feature) */}
             <GoldSilverDiamondCollage />
 
             {/* 11. New Arrivals */}

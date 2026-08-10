@@ -1,5 +1,17 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Images
+import ratnaImg from '../assets/Ratna.jpeg';
+import img2R from '../assets/2R.jpeg';
+import img3R from '../assets/3R.jpeg';
+import img4R from '../assets/4R.jpeg';
+import img5R from '../assets/5R.jpeg';
+import img6R from '../assets/6R.jpeg';
+import img7R from '../assets/7R.jpeg';
+import img8R from '../assets/8R.jpeg';
+import img9R from '../assets/9R.jpeg';
+import img10R from '../assets/10R.jpeg';
+
 import gemstoneRef from '../assets/gemstone_cat_reference.png';
 import rudrakshaRef from '../assets/rudraksha_cat_reference.png';
 import braceletsRef from '../assets/bracelets_cat_reference.png';
@@ -15,10 +27,138 @@ import lionRakhi from '../assets/Lion.jpeg';
 import deviRakhi from '../assets/Devi.jpeg';
 import rakhi6 from '../assets/6.jpeg';
 
+// Videos
+import video11 from '../assets/11R.mp4';
+import video12 from '../assets/12R.mp4';
+import video13 from '../assets/13R.mp4';
+import video14 from '../assets/14r.mp4';
+
 const ProductContext = createContext();
 
 const DEFAULT_PRODUCTS = [
-  // --- 1. PRECIOUS VEDIC GEMSTONES (RATNAS) ---
+  // --- 1. NEWLY ADDED REAL HEALING GEMSTONES & CRYSTAL BRACELETS ---
+  {
+    id: 'gem-real-1',
+    name: 'Pure Natural Sphatik (Clear Quartz) Aura Balancing Bracelet',
+    category: 'Bracelets',
+    discount: 'NATURAL SPHATIK',
+    code: 'RAT-SPH-01',
+    description: 'High-clarity natural Sphatik (Quartz) gemstone beads resting on pure silk for cooling planetary energy and meditation focus.',
+    image: ratnaImg,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-2',
+    name: 'Natural White Moonstone & Selenite Crystal Bracelet',
+    category: 'Bracelets',
+    discount: 'CHANDRA GRAHA',
+    code: 'RAT-MON-02',
+    description: 'Luminous natural White Moonstone gemstone beads for emotional balance, mental peace, and lunar blessings.',
+    image: img2R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-3',
+    name: '7 Chakra Navratna Multi-Gemstone Bracelet with Amethyst Geode',
+    category: 'Bracelets',
+    discount: '7 CHAKRA BALANCE',
+    code: 'RAT-CHK-03',
+    description: 'Supreme 7-Chakra balancing gemstone bracelet featuring Amethyst, Carnelian, Jade, Turquoise, and Lapis Lazuli on raw geode.',
+    image: img3R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-4',
+    name: 'Golden Sunstone & Carnelian Vitality Solar Plexus Bracelet',
+    category: 'Bracelets',
+    discount: 'SURYA ENERGY',
+    code: 'RAT-SUN-04',
+    description: 'Radiant orange-gold Sunstone and Carnelian beads providing warmth, self-confidence, vitality, and solar power.',
+    image: img4R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: false,
+  },
+  {
+    id: 'gem-real-5',
+    name: 'Authentic Tibetan Turquoise (Firoza) Protection Bracelet',
+    category: 'Bracelets',
+    discount: 'NATURAL FIROZA',
+    code: 'RAT-TRQ-05',
+    description: 'Natural sky-blue Turquoise beads with matrix webbing for travel protection, Guru-Brihaspati blessings, and good fortune.',
+    image: img5R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-6',
+    name: 'Vedic Navratna & Multi-Energy Healing Stones Bracelet',
+    category: 'Bracelets',
+    discount: 'NAVRATNA ENERGY',
+    code: 'RAT-NAV-06',
+    description: 'Hand-selected natural planetary healing stones harmonizing all 9 Grahas for overall well-being and prosperity.',
+    image: img6R,
+    isFeatured: false,
+    isNewArrival: true,
+    isBestSeller: false,
+  },
+  {
+    id: 'gem-real-7',
+    name: 'Natural Green Fluorite & Jade Heart Chakra Abundance Bracelet',
+    category: 'Bracelets',
+    discount: 'HEART CHAKRA',
+    code: 'RAT-FLU-07',
+    description: 'Translucent Green Fluorite beads resting in an abalone shell for stress relief, mental clarity, and wealth magnetism.',
+    image: img7R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-8',
+    name: 'Matte Black Onyx & Tourmaline Evil-Eye Shield Bracelet with Pyrite',
+    category: 'Bracelets',
+    discount: 'SHANI & RAHU SHIELD',
+    code: 'RAT-ONX-08',
+    description: 'Matte Black Onyx beads wrapped around golden Pyrite cluster for warding off Nazar (evil eye), negativity, and fear.',
+    image: img8R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-9',
+    name: 'Royal Lapis Lazuli & Golden Pyrite Inclusions Bracelet',
+    category: 'Bracelets',
+    discount: 'THIRD EYE CHAKRA',
+    code: 'RAT-LAP-09',
+    description: 'Deep royal blue celestial Lapis Lazuli beads with natural shimmering golden pyrite flecks for wisdom and truth.',
+    image: img9R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'gem-real-10',
+    name: '7 Chakra Volcanic Lava Stone Grounding & Diffuser Bracelet',
+    category: 'Bracelets',
+    discount: 'LAVA & PYRITE',
+    code: 'RAT-LAV-10',
+    description: 'Porous volcanic lava beads paired with 7 Chakra crystals for aromatherapy essential oil diffusion and Muladhara grounding.',
+    image: img10R,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+
+  // --- 2. PRECIOUS VEDIC GEMSTONES (RATNAS) ---
   {
     id: 'gem-1',
     name: 'Certified Ceylon Yellow Sapphire (Pukhraj) 5.25 Ratti',
@@ -68,7 +208,7 @@ const DEFAULT_PRODUCTS = [
     isBestSeller: true,
   },
 
-  // --- 2. SACRED RUDRAKSHA ---
+  // --- 3. SACRED RUDRAKSHA ---
   {
     id: 'rud-1',
     name: 'Original 1 Mukhi Half Moon Nepali Rudraksha',
@@ -90,56 +230,6 @@ const DEFAULT_PRODUCTS = [
     description: 'Supreme auspicious combination of 1 to 14 Mukhi Nepali beads strung in pure 925 sterling silver caps.',
     image: rudrakshaRef,
     isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'rud-3',
-    name: 'Sacred Gauri Shankar Rudraksha (Nepali)',
-    category: 'Rudraksha',
-    discount: 'MARITAL HARMONY',
-    code: 'RUD-GSH-03',
-    description: 'Naturally conjoined twin Rudraksha symbolizing the divine union of Shiva & Parvati. Blesses marital bliss.',
-    image: rudrakshaRef,
-    isFeatured: false,
-    isNewArrival: true,
-    isBestSeller: false,
-  },
-
-  // --- 3. HEALING GEMSTONE BRACELETS ---
-  {
-    id: 'brc-1',
-    name: 'Golden Tiger Eye Energy & Confidence Bracelet',
-    category: 'Bracelets',
-    discount: 'NATURAL STONE',
-    code: 'BRC-TIG-01',
-    description: 'Triple-grade polished Tiger Eye gemstone beads for courage, grounding energy, and solar plexus activation.',
-    image: braceletsRef,
-    isFeatured: true,
-    isNewArrival: true,
-    isBestSeller: true,
-  },
-  {
-    id: 'brc-2',
-    name: 'Rose Quartz Love & Compassion Healing Bracelet',
-    category: 'Bracelets',
-    discount: 'HEART CHAKRA',
-    code: 'BRC-RSQ-02',
-    description: 'Gentle pink Brazilian Rose Quartz beads for attracting unconditional love, harmony, and emotional healing.',
-    image: braceletsRef,
-    isFeatured: true,
-    isNewArrival: true,
-    isBestSeller: false,
-  },
-  {
-    id: 'brc-3',
-    name: 'Lapis Lazuli Wisdom & Third-Eye Chakra Bracelet',
-    category: 'Bracelets',
-    discount: 'ROYAL GRADE',
-    code: 'BRC-LAP-03',
-    description: 'Natural deep indigo Lapis Lazuli with golden pyrite inclusions. Enhances intuition and intellectual clarity.',
-    image: braceletsRef,
-    isFeatured: false,
     isNewArrival: false,
     isBestSeller: true,
   },
@@ -169,18 +259,6 @@ const DEFAULT_PRODUCTS = [
     isNewArrival: false,
     isBestSeller: true,
   },
-  {
-    id: 'mal-3',
-    name: 'Sacred Red Sandalwood (Rakt Chandan) Japa Mala',
-    category: 'Mala',
-    discount: 'NATURAL FRAGRANCE',
-    code: 'MAL-SAN-03',
-    description: 'Authentic South Indian Red Sandalwood beads associated with Gayatri mantra and Mars planetary energy.',
-    image: malaRef,
-    isFeatured: false,
-    isNewArrival: true,
-    isBestSeller: false,
-  },
 
   // --- 5. ASTROLOGICAL GEMSTONE RINGS ---
   {
@@ -206,18 +284,6 @@ const DEFAULT_PRODUCTS = [
     isFeatured: true,
     isNewArrival: false,
     isBestSeller: true,
-  },
-  {
-    id: 'rng-3',
-    name: 'Sacred Panchdhatu Colombian Emerald (Panna) Ring',
-    category: 'Rings',
-    discount: '5-METAL ALLOY',
-    code: 'RNG-PAN-03',
-    description: 'Traditional 5-metal astrological alloy setting crafted according to ancient Shilpa Shastra guidelines.',
-    image: ringsRef,
-    isFeatured: true,
-    isNewArrival: true,
-    isBestSeller: false,
   },
 
   // --- 6. NATURAL HEALING CRYSTAL PRODUCTS ---
@@ -245,98 +311,12 @@ const DEFAULT_PRODUCTS = [
     isNewArrival: true,
     isBestSeller: true,
   },
-  {
-    id: 'cry-3',
-    name: 'Pure Clear Quartz Sacred Energy Pyramid (Vastu)',
-    category: 'Crystal Products',
-    discount: 'VASTU ENERGIZED',
-    code: 'CRY-QUR-03',
-    description: 'Hand-cut optical clear quartz pyramid for neutralizing negative electromagnetic frequencies and Vastu dosha.',
-    image: crystalProductsRef,
-    isFeatured: false,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-
-  // --- 7. PURE SILVER RAKHIS & FESTIVE COLLECTION ---
-  {
-    id: 'slv-1',
-    name: 'Antique Om Floral Pure 925 Silver Rakhi',
-    category: 'Silver Collection',
-    discount: '925 STERLING',
-    code: 'SLV-R01',
-    description: 'Pure 925 Sterling Silver Rakhi featuring a sacred handcrafted Antique Om motif with auspicious silk thread.',
-    image: antiqueOm,
-    isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'slv-2',
-    name: 'Royal Peacock Craft Pure 925 Silver Rakhi',
-    category: 'Silver Collection',
-    discount: '925 STERLING',
-    code: 'SLV-R02',
-    description: 'Intricate peacock design in 925 sterling silver with artisanal detailing.',
-    image: rakhi2,
-    isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'slv-3',
-    name: '925 Pure Silver Divine Ganesha Rakhi',
-    category: 'Silver Collection',
-    discount: '925 STERLING',
-    code: 'SLV-R03',
-    description: 'Auspicious Lord Ganesha motif carved in solid 925 pure silver.',
-    image: rakhi3,
-    isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'slv-4',
-    name: 'Royal Lion Pure Silver Rakhi',
-    category: 'Silver Collection',
-    discount: '925 STERLING',
-    code: 'SLV-R04',
-    description: 'Regal Simha (Lion) motif in pure 925 sterling silver representing strength and protection.',
-    image: lionRakhi,
-    isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'slv-5',
-    name: 'Divine Devi Pure Silver Rakhi',
-    category: 'Silver Collection',
-    discount: '925 STERLING',
-    code: 'SLV-R05',
-    description: 'Goddess Lakshmi/Devi motif handcrafted in 925 pure sterling silver.',
-    image: deviRakhi,
-    isFeatured: false,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-  {
-    id: 'slv-6',
-    name: '24KT Pure Gold Laxmi Ganesha Coin (10g)',
-    category: 'Gold',
-    discount: '24KT 999 PURE',
-    code: 'GLD-COIN-06',
-    description: '999 pure gold coin with BIS Hallmarked purity certificate for Diwali puja and auspicious gifting.',
-    image: rakhi6,
-    isFeatured: false,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
 ];
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => {
     try {
-      const saved = localStorage.getItem('amrapali_products_v2');
+      const saved = localStorage.getItem('amrapali_products_v3');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -351,7 +331,7 @@ export function ProductProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('amrapali_products_v2', JSON.stringify(products));
+      localStorage.setItem('amrapali_products_v3', JSON.stringify(products));
     } catch (err) {
       console.error('Failed to save products to localStorage', err);
     }
@@ -385,7 +365,7 @@ export function ProductProvider({ children }) {
 
   const resetCatalog = () => {
     setProducts(DEFAULT_PRODUCTS);
-    localStorage.removeItem('amrapali_products_v2');
+    localStorage.removeItem('amrapali_products_v3');
   };
 
   return (
