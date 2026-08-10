@@ -10,22 +10,31 @@ import malaRef from '../assets/mala_cat_reference.png';
 import ringsRef from '../assets/rings_cat_reference.png';
 import crystalProductsRef from '../assets/crystal_products_cat_reference.png';
 
-export default function GemstoneCollection({ onOpenRecommendation }) {
+export default function GemstoneCollection({ onOpenRecommendation, activeFilter, onSelectFilter }) {
   const { products } = useProducts();
-  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [internalFilter, setInternalFilter] = useState('All');
+
+  const selectedFilter = activeFilter || internalFilter;
+  const handleFilterChange = (filterId) => {
+    if (onSelectFilter) {
+      onSelectFilter(filterId);
+    } else {
+      setInternalFilter(filterId);
+    }
+  };
 
   const filterTabs = [
     { id: 'All', label: 'All Sacred Ratnas & Gems' },
+    { id: 'Bracelets', label: 'Healing Bracelets (Real Photos)' },
     { id: 'Gemstone', label: '9 Vedic Ratnas' },
     { id: 'Rudraksha', label: 'Sacred Rudraksha' },
-    { id: 'Bracelets', label: 'Healing Bracelets' },
     { id: 'Mala', label: 'Japa Malas' },
     { id: 'Rings', label: 'Astrological Rings' },
     { id: 'Crystal Products', label: 'Crystal Products' },
   ];
 
   const filteredProducts = selectedFilter === 'All'
-    ? products.filter(p => ['Gemstone', 'Rudraksha', 'Bracelets', 'Mala', 'Rings', 'Crystal Products'].includes(p.category))
+    ? products.filter(p => ['Bracelets', 'Gemstone', 'Rudraksha', 'Mala', 'Rings', 'Crystal Products'].includes(p.category))
     : products.filter(p => p.category === selectedFilter);
 
   return (
@@ -67,7 +76,7 @@ export default function GemstoneCollection({ onOpenRecommendation }) {
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setSelectedFilter(tab.id)}
+              onClick={() => handleFilterChange(tab.id)}
               className={`px-4 py-2 rounded-xl text-xs font-serif tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${
                 selectedFilter === tab.id
                   ? 'bg-[#8B5E14] text-amber-50 font-bold shadow-md border border-[#8B5E14]'

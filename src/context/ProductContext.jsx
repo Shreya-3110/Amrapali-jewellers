@@ -316,7 +316,7 @@ const DEFAULT_PRODUCTS = [
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => {
     try {
-      const saved = localStorage.getItem('amrapali_products_v3');
+      const saved = localStorage.getItem('amrapali_products_v4');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -331,7 +331,7 @@ export function ProductProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('amrapali_products_v3', JSON.stringify(products));
+      localStorage.setItem('amrapali_products_v4', JSON.stringify(products));
     } catch (err) {
       console.error('Failed to save products to localStorage', err);
     }

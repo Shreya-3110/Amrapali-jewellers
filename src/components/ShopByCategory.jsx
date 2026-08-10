@@ -10,7 +10,7 @@ import ringsRef from '../assets/rings_cat_reference.png';
 import recommendationRef from '../assets/recommendation_cat_reference.png';
 import crystalProductsRef from '../assets/crystal_products_cat_reference.png';
 
-export default function ShopByCategory({ onOpenRecommendation }) {
+export default function ShopByCategory({ onOpenRecommendation, onSelectCategory }) {
   const scrollContainerRef = useRef(null);
 
   const categories = [
@@ -18,31 +18,31 @@ export default function ShopByCategory({ onOpenRecommendation }) {
       name: 'Gemstone',
       count: '9 Vedic Ratnas',
       image: gemstoneRef,
-      targetId: 'gemstone',
+      filterId: 'Gemstone',
     },
     {
       name: 'Rudraksha',
       count: '1 to 21 Mukhi Beads',
       image: rudrakshaRef,
-      targetId: 'rudraksha-collection',
+      filterId: 'Rudraksha',
     },
     {
       name: 'Bracelets',
       count: 'Healing Gemstone Beads',
       image: braceletsRef,
-      targetId: 'bracelets-collection',
+      filterId: 'Bracelets',
     },
     {
       name: 'Mala',
       count: 'Sacred Japa Malas',
       image: malaRef,
-      targetId: 'mala-collection',
+      filterId: 'Mala',
     },
     {
       name: 'Rings',
       count: 'Astrological Rings',
       image: ringsRef,
-      targetId: 'rings-collection',
+      filterId: 'Rings',
     },
     {
       name: 'Free Gems Recommendation',
@@ -55,7 +55,7 @@ export default function ShopByCategory({ onOpenRecommendation }) {
       name: 'Crystal Products',
       count: 'Amethyst, Citrine & Pyramids',
       image: crystalProductsRef,
-      targetId: 'crystals-collection',
+      filterId: 'Crystal Products',
     },
   ];
 
@@ -64,17 +64,12 @@ export default function ShopByCategory({ onOpenRecommendation }) {
       cat.onClick();
       return;
     }
-    if (cat.targetId) {
-      const elem = document.getElementById(cat.targetId);
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
-      // Fallback: scroll to gemstone section
-      const gemElem = document.getElementById('gemstone');
-      if (gemElem) {
-        gemElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    if (cat.filterId && onSelectCategory) {
+      onSelectCategory(cat.filterId);
+    }
+    const gemElem = document.getElementById('gemstone');
+    if (gemElem) {
+      gemElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 

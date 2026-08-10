@@ -30,6 +30,7 @@ export default function App() {
   const [isCMSOpen, setIsCMSOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isRecommendationOpen, setIsRecommendationOpen] = useState(false);
+  const [selectedGemFilter, setSelectedGemFilter] = useState('All');
 
   // Keyboard shortcut Ctrl + Shift + A to trigger Admin CMS modal
   useEffect(() => {
@@ -89,6 +90,7 @@ export default function App() {
             {/* 6. Shop By 7 Ratna & Gemstone Categories (Exact Reference Layout) */}
             <ShopByCategory 
               onOpenRecommendation={() => setIsRecommendationOpen(true)}
+              onSelectCategory={(catId) => setSelectedGemFilter(catId)}
             />
 
             {/* 7. Ultra-Minimalist Editorial Collection Showcase (The Navaratna Drops, Temple Arch Cuff, The Polki Solitaire) */}
@@ -100,6 +102,8 @@ export default function App() {
             {/* 9. Precious Gemstone & Vedic Ratna Collection (Primary Focus) */}
             <GemstoneCollection 
               onOpenRecommendation={() => setIsRecommendationOpen(true)}
+              activeFilter={selectedGemFilter}
+              onSelectFilter={(filterId) => setSelectedGemFilter(filterId)}
             />
 
             {/* 10. Live Gemstone Video Showcase (4K Live Showroom Videos) */}
