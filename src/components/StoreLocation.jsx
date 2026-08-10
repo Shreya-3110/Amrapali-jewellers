@@ -1,73 +1,120 @@
 import React from 'react';
-import { MapPin, Clock, Phone, Navigation, Building } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation, Building, Calendar, ShieldCheck, Sparkles, MessageCircle } from 'lucide-react';
 
 export default function StoreLocation() {
+  const showroomAddress = "10 No. market, Galaxy Apartment, Main Road, beside Manohar Dairy, E-3, Arera Colony, Bhopal, Madhya Pradesh 462016";
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Amrapali Jewellers Galaxy Apartment 10 No Market beside Manohar Dairy Arera Colony Bhopal")}`;
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent("Galaxy Apartment, 10 No. market, beside Manohar Dairy, E-3, Arera Colony, Bhopal, Madhya Pradesh 462016")}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+
+  const handleBookVisit = () => {
+    const text = encodeURIComponent(
+      `Namaste Amrapali Jewellers Ratna Showroom! 🏛️\n\nI would like to book a private consultation at your Bhopal Showroom:\nAddress: 10 No. market, Galaxy Apartment, beside Manohar Dairy, E-3, Arera Colony, Bhopal.\n\nPlease share available time slots.`
+    );
+    window.open(`https://wa.me/919412288300?text=${text}`, '_blank');
+  };
+
   return (
-    <section id="store-location" className="w-full py-10 bg-white border-b border-amber-900/10">
+    <section id="store-location" className="w-full py-16 bg-white border-b border-amber-900/10">
       <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row items-center justify-between mb-8 pb-3 border-b border-amber-900/15 text-center sm:text-left gap-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-8 pb-4 border-b border-amber-900/15 text-center sm:text-left gap-4">
           <div>
-            <span className="text-[10px] font-serif font-bold tracking-[0.25em] text-[#8B5E14] uppercase">FLAGSHIP EXPERIENCE</span>
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1C1917] mt-0.5">
-              Amrapali Jewellers Ratna Showroom
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+              <span className="text-[10px] font-serif font-bold tracking-[0.25em] text-[#8B5E14] uppercase">
+                FLAGSHIP BOUTIQUE & RATNA ATELIER
+              </span>
+              <span className="inline-flex items-center gap-1 text-[9px] px-2 py-0.5 bg-amber-500/15 text-[#8B5E14] font-serif rounded-full font-bold">
+                <Sparkles className="w-2.5 h-2.5" />
+                Bhopal (M.P.)
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#1C1917]">
+              Visit Amrapali Jewellers Ratna Showroom
             </h2>
           </div>
-          <a href="#" className="text-xs font-serif font-bold uppercase tracking-wider text-[#8B5E14] hover:text-[#734C0E] border border-amber-800/20 px-4 py-2 rounded-lg hover:bg-amber-50 transition-colors">
-            Book VIP Lounge Appointment →
-          </a>
+
+          <button 
+            onClick={handleBookVisit}
+            className="text-xs font-serif font-bold uppercase tracking-wider text-[#8B5E14] hover:text-white bg-amber-50 hover:bg-[#8B5E14] border border-amber-800/30 px-5 py-2.5 rounded-xl transition-all shadow-2xs flex items-center gap-2 cursor-pointer"
+          >
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Book Showroom Appointment →</span>
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Embedded Map Wireframe Placeholder */}
-          <div className="lg:col-span-7 bg-[#FAF7F2] border-2 border-dashed border-amber-800/20 rounded-2xl min-h-[320px] sm:min-h-[380px] flex flex-col items-center justify-center p-6 text-stone-500 text-center">
-            <div className="w-14 h-14 rounded-full bg-amber-100/80 border border-amber-700/30 flex items-center justify-center mb-3 text-[#8B5E14]">
-              <MapPin className="w-7 h-7 stroke-[1.75]" />
+          {/* Left: Interactive Google Map Embed */}
+          <div className="lg:col-span-7 bg-[#FAF7F2] border border-amber-800/20 rounded-3xl overflow-hidden shadow-md flex flex-col min-h-[380px]">
+            <div className="w-full flex-1 relative min-h-[300px]">
+              <iframe
+                title="Amrapali Jewellers Bhopal Showroom Location Map"
+                src={mapEmbedUrl}
+                className="w-full h-full min-h-[320px] border-0"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
-            <span className="text-sm font-serif font-bold uppercase tracking-wider text-[#1C1917]">
-              Ratna Showroom Location Map Placeholder
-            </span>
-            <p className="text-xs text-stone-500 mt-1 max-w-sm">
-              [Embedded iFrame Map Location for Amrapali Jewellers Ratna Showroom will render here]
-            </p>
-            <div className="mt-4 flex items-center gap-2">
-              <button className="bg-[#8B5E14] hover:bg-[#734C0E] text-white text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-1.5 uppercase tracking-wider shadow-xs">
+            
+            <div className="p-4 bg-[#FAF7F2] border-t border-amber-900/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div className="flex items-center gap-2 text-stone-700 font-serif">
+                <MapPin className="w-4 h-4 text-[#8B5E14] shrink-0" />
+                <span className="line-clamp-1">10 No. Market, Beside Manohar Dairy, Arera Colony, Bhopal</span>
+              </div>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#8B5E14] hover:bg-[#724B0D] text-white font-serif font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 uppercase tracking-wider shadow-xs transition-colors shrink-0"
+              >
                 <Navigation className="w-3.5 h-3.5" />
                 <span>Get Driving Directions</span>
-              </button>
+              </a>
             </div>
           </div>
 
-          {/* Store Details */}
-          <div className="lg:col-span-5 bg-[#FAF7F2] border border-amber-800/15 rounded-2xl p-6 sm:p-8 space-y-6">
+          {/* Right: Detailed Showroom Address & Information */}
+          <div className="lg:col-span-5 bg-[#FAF7F2] border border-amber-800/20 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md">
             
+            {/* Address Header */}
             <div>
-              <div className="flex items-center gap-2 text-[#1C1917] font-serif font-bold text-xl mb-1">
+              <div className="flex items-center gap-2 text-[#1C1917] font-serif font-medium text-xl mb-2">
                 <Building className="w-5 h-5 text-[#8B5E14]" />
-                <h3>Ratna Showroom Boutique</h3>
+                <h3>Flagship Boutique Address</h3>
               </div>
-              <p className="text-xs text-stone-600 leading-relaxed mt-2 font-sans">
-                Main Showroom Building, Inner Circle, Connaught Place, New Delhi - 110001
-              </p>
+              
+              <div className="bg-white border border-amber-900/15 rounded-2xl p-4 shadow-2xs space-y-1.5">
+                <p className="text-xs sm:text-sm font-serif font-bold text-[#1C1917] leading-snug">
+                  Amrapali Jewellers Ratna Showroom
+                </p>
+                <p className="text-xs text-stone-700 font-serif leading-relaxed">
+                  10 No. market, Galaxy Apartment, Main Road, beside Manohar Dairy, E-3, Arera Colony, Bhopal, Madhya Pradesh 462016
+                </p>
+                <div className="pt-2 flex items-center gap-2 text-[11px] text-[#8B5E14] font-serif font-semibold">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Landmark: Beside Manohar Dairy, 10 No. Market</span>
+                </div>
+              </div>
             </div>
 
-            <div className="border-t border-amber-900/10 pt-4 space-y-3 text-xs text-stone-700">
+            {/* Working Hours & Contact Numbers */}
+            <div className="border-t border-amber-900/10 pt-4 space-y-3.5 text-xs text-stone-700 font-serif">
               <div className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-[#8B5E14] mt-0.5" />
+                <Clock className="w-4 h-4 text-[#8B5E14] mt-0.5 shrink-0" />
                 <div>
-                  <span className="font-serif font-bold text-[#1C1917] block">Working Hours</span>
+                  <span className="font-bold text-[#1C1917] block">Showroom Timings</span>
                   <span>Monday - Sunday: 10:30 AM - 8:30 PM</span>
-                  <span className="block text-[11px] text-stone-500 mt-0.5">(Open on all festivals & Sundays)</span>
+                  <span className="block text-[11px] text-stone-500 mt-0.5">(Open 7 days a week & on all auspicious festivals)</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 pt-2">
-                <Phone className="w-4 h-4 text-[#8B5E14] mt-0.5" />
+              <div className="flex items-start gap-3 pt-1">
+                <Phone className="w-4 h-4 text-[#8B5E14] mt-0.5 shrink-0" />
                 <div>
-                  <span className="font-serif font-bold text-[#1C1917] block">Showroom Direct Contact</span>
-                  <span>+91 11 2341 5678 / +91 98765 43210</span>
+                  <span className="font-bold text-[#1C1917] block">Direct Consultation & Appointments</span>
+                  <a href="tel:+919412288300" className="hover:text-[#8B5E14] font-medium">+91 94122 88300</a> / <a href="tel:18001234567" className="hover:text-[#8B5E14]">1800-123-4567 (Toll Free)</a>
                 </div>
               </div>
             </div>
@@ -75,14 +122,25 @@ export default function StoreLocation() {
             {/* In-Store Amenities */}
             <div className="border-t border-amber-900/10 pt-4">
               <span className="text-[10px] font-serif font-bold uppercase tracking-wider text-[#8B5E14] block mb-2">
-                Showroom Amenities:
+                In-Store Showroom Amenities:
               </span>
-              <div className="flex flex-wrap gap-1.5 text-[11px]">
-                <span className="bg-white border border-amber-800/15 text-stone-700 px-2.5 py-1 rounded-md font-medium">Valet Parking</span>
-                <span className="bg-white border border-amber-800/15 text-stone-700 px-2.5 py-1 rounded-md font-medium">VIP Bridal Suite</span>
-                <span className="bg-white border border-amber-800/15 text-stone-700 px-2.5 py-1 rounded-md font-medium">Custom Design Studio</span>
-                <span className="bg-white border border-amber-800/15 text-stone-700 px-2.5 py-1 rounded-md font-medium">Old Gold Exchange</span>
+              <div className="flex flex-wrap gap-1.5 text-[11px] font-serif">
+                <span className="bg-white border border-amber-800/15 text-stone-800 px-2.5 py-1 rounded-lg font-medium shadow-2xs">Gemstone Testing Lab</span>
+                <span className="bg-white border border-amber-800/15 text-stone-800 px-2.5 py-1 rounded-lg font-medium shadow-2xs">Kundli & Astrologer Consultation</span>
+                <span className="bg-white border border-amber-800/15 text-stone-800 px-2.5 py-1 rounded-lg font-medium shadow-2xs">Custom Gold/Silver Karigari</span>
+                <span className="bg-white border border-amber-800/15 text-stone-800 px-2.5 py-1 rounded-lg font-medium shadow-2xs">Valet Parking Available</span>
               </div>
+            </div>
+
+            {/* Quick Action Button */}
+            <div className="pt-2">
+              <button
+                onClick={handleBookVisit}
+                className="w-full py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#1EBE5B] text-white text-xs font-serif font-bold tracking-wider uppercase shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Chat On WhatsApp For Showroom Directions</span>
+              </button>
             </div>
 
           </div>

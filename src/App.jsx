@@ -3,6 +3,8 @@ import { ProductProvider } from './context/ProductContext';
 import { WishlistProvider } from './context/WishlistContext';
 import AdminCMS from './components/AdminCMS';
 import WishlistDrawer from './components/WishlistDrawer';
+import FreeGemsRecommendationModal from './components/FreeGemsRecommendationModal';
+import FloatingGemsRecommendationBadge from './components/FloatingGemsRecommendationBadge';
 import AnnouncementBar from './components/AnnouncementBar';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -10,11 +12,10 @@ import HeroSlider from './components/HeroSlider';
 import ShopByCategory from './components/ShopByCategory';
 import FluidPromoBanner from './components/FluidPromoBanner';
 import FeaturedCollections from './components/FeaturedCollections';
+import GemstoneCollection from './components/GemstoneCollection';
+import GoldSilverDiamondCollage from './components/GoldSilverDiamondCollage';
 import NewArrivals from './components/NewArrivals';
 import BestSellers from './components/BestSellers';
-import GoldCollection from './components/GoldCollection';
-import DiamondCollection from './components/DiamondCollection';
-import GemstoneCollection from './components/GemstoneCollection';
 import SilverCollection from './components/SilverCollection';
 import AboutUs from './components/AboutUs';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -27,6 +28,7 @@ import Footer from './components/Footer';
 export default function App() {
   const [isCMSOpen, setIsCMSOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [isRecommendationOpen, setIsRecommendationOpen] = useState(false);
 
   // Keyboard shortcut Ctrl + Shift + A to trigger Admin CMS modal
   useEffect(() => {
@@ -43,12 +45,24 @@ export default function App() {
   return (
     <ProductProvider>
       <WishlistProvider>
-        <div className="min-h-screen bg-[#FAF7F2] font-sans text-slate-800 flex flex-col">
+        <div className="min-h-screen bg-[#FAF7F2] font-sans text-slate-800 flex flex-col relative">
+          
           {/* Admin CMS Modal */}
           <AdminCMS isOpen={isCMSOpen} onClose={() => setIsCMSOpen(false)} />
 
           {/* Wishlist Drawer */}
           <WishlistDrawer isOpen={isWishlistOpen} onClose={() => setIsWishlistOpen(false)} />
+
+          {/* Free Vedic Gemstone Recommendation Modal */}
+          <FreeGemsRecommendationModal 
+            isOpen={isRecommendationOpen} 
+            onClose={() => setIsRecommendationOpen(false)} 
+          />
+
+          {/* Floating Side Badge (Matches "फ्री जन्मपत्री / GEMS" badge in reference photo) */}
+          <FloatingGemsRecommendationBadge 
+            onOpenModal={() => setIsRecommendationOpen(true)} 
+          />
 
           {/* 1. Top Announcement Bar */}
           <AnnouncementBar />
@@ -59,7 +73,9 @@ export default function App() {
           />
 
           {/* 3. Navigation Bar */}
-          <Navbar />
+          <Navbar 
+            onOpenRecommendation={() => setIsRecommendationOpen(true)}
+          />
 
           {/* Main Content Area */}
           <main className="flex-1">
@@ -69,37 +85,38 @@ export default function App() {
             {/* 5. Floating Trust Assurance Bar (Directly below Hero) */}
             <WhyChooseUs />
 
-            {/* 6. Ultra-Minimalist Editorial Collection Showcase (The Navaratna Drops, Temple Arch Cuff, The Polki Solitaire) */}
-            <FeaturedCollections />
+            {/* 6. Shop By 7 Ratna & Gemstone Categories (Exact Reference Layout) */}
+            <ShopByCategory 
+              onOpenRecommendation={() => setIsRecommendationOpen(true)}
+            />
 
-            {/* 7. Shop By Category Section */}
-            <ShopByCategory />
+            {/* 7. Ultra-Minimalist Editorial Collection Showcase (The Navaratna Drops, Temple Arch Cuff, The Polki Solitaire) */}
+            <FeaturedCollections />
 
             {/* 8. Wavy Fluid Organic Promo Showcase Section */}
             <FluidPromoBanner />
 
-            {/* 9. New Arrivals */}
+            {/* 9. Precious Gemstone & Vedic Ratna Collection (Primary Focus) */}
+            <GemstoneCollection 
+              onOpenRecommendation={() => setIsRecommendationOpen(true)}
+            />
+
+            {/* 10. Gold, Silver & Diamond Showroom Collage Section (Showroom Walk-in Feature) */}
+            <GoldSilverDiamondCollage />
+
+            {/* 11. New Arrivals */}
             <NewArrivals />
 
-            {/* 10. Best Sellers */}
+            {/* 12. Best Sellers */}
             <BestSellers />
 
-            {/* 11. Gold Collection */}
-            <GoldCollection />
-
-            {/* 12. Diamond Collection */}
-            <DiamondCollection />
-
-            {/* 13. Gemstone Collection */}
-            <GemstoneCollection />
-
-            {/* 14. Silver Collection */}
+            {/* 13. Silver Rakhi & Puja Collection */}
             <SilverCollection />
 
-            {/* 15. About Amrapali Jewellers Ratna Showroom (Legacy, Founder, Offerings & Pillars) */}
+            {/* 14. About Amrapali Jewellers Ratna Showroom (Legacy, Founder, Offerings & Pillars) */}
             <AboutUs />
 
-            {/* 16. Customer Testimonials */}
+            {/* 15. Customer Testimonials */}
             <Testimonials />
 
             {/* 16. Instagram Gallery */}

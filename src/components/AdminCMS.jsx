@@ -535,12 +535,15 @@ export default function AdminCMS({ isOpen, onClose }) {
                           onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                           className="w-full text-xs px-3.5 py-2.5 bg-white border border-amber-900/15 rounded-lg outline-none text-stone-800 focus:border-[#8B5E14] cursor-pointer"
                         >
-                          <option value="Silver Collection">Silver Collection</option>
-                          <option value="Gold Collection">Gold Collection</option>
-                          <option value="Diamond Collection">Diamond Collection</option>
-                          <option value="Bridal Collection">Bridal Collection</option>
-                          <option value="New Arrivals">New Arrivals</option>
-                          <option value="Best Sellers">Best Sellers</option>
+                          <option value="Gemstone">Precious Gemstones (9 Vedic Ratnas)</option>
+                          <option value="Rudraksha">Sacred Rudraksha Beads</option>
+                          <option value="Bracelets">Healing Gemstone Bracelets</option>
+                          <option value="Mala">Sacred Japa Malas</option>
+                          <option value="Rings">Astrological Rings</option>
+                          <option value="Crystal Products">Crystal Products & Pyramids</option>
+                          <option value="Silver Collection">Silver Collection & Rakhis</option>
+                          <option value="Gold">Gold Jewellery</option>
+                          <option value="Diamond">Diamond Jewellery</option>
                         </select>
                       </div>
 

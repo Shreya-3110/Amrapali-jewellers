@@ -134,8 +134,8 @@ export default function Footer({ onOpenCMS }) {
           </h4>
           <div className="space-y-3 text-slate-400">
             <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-slate-500 mt-0.5" />
-              <span>Ratna Showroom: Amrapali Jewellers, Main Road, Connaught Place, New Delhi 110001</span>
+              <MapPin className="w-4 h-4 text-slate-500 mt-0.5 shrink-0" />
+              <span>Ratna Showroom: 10 No. market, Galaxy Apartment, Main Road, beside Manohar Dairy, E-3, Arera Colony, Bhopal, Madhya Pradesh 462016</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-slate-500" />
