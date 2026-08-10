@@ -7,12 +7,14 @@ import video13 from '../assets/13R.mp4';
 import video14 from '../assets/14r.mp4';
 import rudrakshaVideo from '../assets/Rudraksha/rudraksha_video.mp4';
 import stoneBraceletVideo from '../assets/stone_bracelet_video.mp4';
+import stoneBraceletVideo2 from '../assets/stone_bracelet_video_2.mp4';
 
 import ratnaImg from '../assets/Ratna.jpeg';
 import img3R from '../assets/3R.jpeg';
 import img7R from '../assets/7R.jpeg';
 import img9R from '../assets/9R.jpeg';
 import img5R from '../assets/5R.jpeg';
+import img8R from '../assets/8R.jpeg';
 import mala4Mukhi from '../assets/Rudraksha/4_mukhi_rudraksha_mala.jpg';
 
 export default function LiveGemstoneReels() {
@@ -41,6 +43,15 @@ export default function LiveGemstoneReels() {
     },
     {
       id: 3,
+      title: "Vedic Crystal Energy Stones & Multi-Gemstone Radiance",
+      tag: "STUDIO 4K CAPTURE",
+      category: "Aura Balancing",
+      videoSrc: stoneBraceletVideo2,
+      poster: img8R,
+      desc: "High-definition showroom lighting revealing natural crystal facets, inclusions, and spherical precision.",
+    },
+    {
+      id: 4,
       title: "Raw Amethyst Geode & Multi-Chakra Gemstone Bead Luster",
       tag: "100% NATURAL UNHEATED",
       category: "Healing Energy Stones",
@@ -49,22 +60,13 @@ export default function LiveGemstoneReels() {
       desc: "Watch the genuine natural color zoning, clarity and deep celestial purple hues of authentic Brazilian Amethyst and energized Chakra crystals.",
     },
     {
-      id: 4,
+      id: 5,
       title: "Natural Green Fluorite & Jade Luminous Crystal Motion",
       tag: "HIGH CLARITY GRADE",
       category: "Heart Chakra Stones",
       videoSrc: video12,
       poster: img7R,
       desc: "Observe the soothing translucent green light transmission and precision spherical polishing under pure white studio lighting.",
-    },
-    {
-      id: 5,
-      title: "Pure Diamond-Cut Sphatik & Clear Quartz Brilliance",
-      tag: "VEDIC ENERGIZED",
-      category: "Pure Quartz Mala",
-      videoSrc: video13,
-      poster: ratnaImg,
-      desc: "Experience the cool, crystalline purity and optical clarity of genuine Himalayan Sphatik beads crafted for Japa meditation.",
     },
     {
       id: 6,
@@ -85,7 +87,6 @@ export default function LiveGemstoneReels() {
       video.pause();
       setPlayingIdx(null);
     } else {
-      // Pause others
       videoRefs.current.forEach((v, i) => {
         if (v && i !== idx) v.pause();
       });
