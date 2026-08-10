@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Sparkles, ShieldCheck, MessageCircle, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, MessageCircle, Volume2, VolumeX } from 'lucide-react';
 
 import video11 from '../assets/11R.mp4';
 import video12 from '../assets/12R.mp4';
@@ -18,9 +18,7 @@ import img8R from '../assets/8R.jpeg';
 import mala4Mukhi from '../assets/Rudraksha/4_mukhi_rudraksha_mala.jpg';
 
 export default function LiveGemstoneReels() {
-  const [playingIdx, setPlayingIdx] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
-  const videoRefs = useRef([]);
 
   const reels = [
     {
@@ -79,22 +77,6 @@ export default function LiveGemstoneReels() {
     },
   ];
 
-  const togglePlay = (idx) => {
-    const video = videoRefs.current[idx];
-    if (!video) return;
-
-    if (playingIdx === idx && !video.paused) {
-      video.pause();
-      setPlayingIdx(null);
-    } else {
-      videoRefs.current.forEach((v, i) => {
-        if (v && i !== idx) v.pause();
-      });
-      video.play();
-      setPlayingIdx(idx);
-    }
-  };
-
   const handleWhatsAppEnquire = (reel) => {
     const text = encodeURIComponent(
       `Namaste Amrapali Jewellers! ✨\n\nI just watched the live video showcase of "${reel.title}" on your website.\n\nCould you please share pricing, certification details, and availability at your Bhopal showroom?`
@@ -119,7 +101,7 @@ export default function LiveGemstoneReels() {
               </span>
               <span className="inline-flex items-center gap-1 text-[9px] px-2.5 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-200 font-serif rounded-full font-bold">
                 <Sparkles className="w-3 h-3 text-amber-300" />
-                Raw Gemstone & Rudraksha Luster In Motion
+                Continuous 4K Showroom Motion
               </span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-serif font-light text-white tracking-tight">
@@ -142,89 +124,60 @@ export default function LiveGemstoneReels() {
           </div>
         </div>
 
-        {/* 6 Video Reels Grid */}
+        {/* 6 Video Reels Grid - Seamless Continuous Autoplay */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {reels.map((reel, idx) => {
-            const isCurrentPlaying = playingIdx === idx;
+          {reels.map((reel) => (
+            <div
+              key={reel.id}
+              className="bg-[#201B17] border border-amber-800/30 rounded-3xl overflow-hidden shadow-xl hover:border-[#C5A059] transition-all duration-500 group flex flex-col justify-between"
+            >
+              {/* Video Media Container (Aspect 9:14 portrait reel style) - AutoPlay Loop */}
+              <div className="w-full aspect-[9/14] bg-stone-950 relative overflow-hidden">
+                <video
+                  src={reel.videoSrc}
+                  poster={reel.poster}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
 
-            return (
-              <div
-                key={reel.id}
-                className="bg-[#201B17] border border-amber-800/30 rounded-3xl overflow-hidden shadow-xl hover:border-[#C5A059] transition-all duration-500 group flex flex-col justify-between"
-              >
-                {/* Video Media Container (Aspect 9:16 portrait reel style) */}
-                <div 
-                  className="w-full aspect-[9/14] bg-stone-950 relative overflow-hidden cursor-pointer"
-                  onClick={() => togglePlay(idx)}
-                >
-                  <video
-                    ref={(el) => (videoRefs.current[idx] = el)}
-                    src={reel.videoSrc}
-                    poster={reel.poster}
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-
-                  {/* Top Badge Overlay */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                    <span className="bg-black/70 backdrop-blur-md border border-amber-500/30 text-amber-300 text-[7px] font-serif font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                      {reel.tag}
-                    </span>
-                    <span className="bg-red-600/90 text-white text-[7px] font-sans font-bold px-1.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                      <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
-                      LIVE
-                    </span>
-                  </div>
-
-                  {/* Play / Pause Center Overlay Button */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/10 transition-colors">
-                    <button
-                      className={`w-11 h-11 rounded-full bg-[#8B5E14]/90 hover:bg-[#8B5E14] text-white flex items-center justify-center backdrop-blur-md border border-amber-400/40 shadow-2xl transition-all transform group-hover:scale-110 cursor-pointer ${
-                        isCurrentPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-90'
-                      }`}
-                      aria-label={isCurrentPlaying ? "Pause Video" : "Play Video"}
-                    >
-                      {isCurrentPlaying ? (
-                        <Pause className="w-5 h-5 fill-white" />
-                      ) : (
-                        <Play className="w-5 h-5 fill-white ml-0.5" />
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Bottom Hint */}
-                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[9px] text-amber-100/80 font-serif bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-lg">
-                    <span>Click to {isCurrentPlaying ? 'Pause' : 'Play'}</span>
-                    <Eye className="w-3 h-3 text-amber-300" />
-                  </div>
+                {/* Top Badge Overlay */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 pointer-events-none">
+                  <span className="bg-black/70 backdrop-blur-md border border-amber-500/30 text-amber-300 text-[7px] font-serif font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    {reel.tag}
+                  </span>
+                  <span className="bg-red-600/90 text-white text-[7px] font-sans font-bold px-1.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                    <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
+                    LIVE
+                  </span>
                 </div>
-
-                {/* Details Footer */}
-                <div className="p-3 space-y-1.5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[8px] font-serif font-bold tracking-wider text-[#C5A059] uppercase block mb-0.5">
-                      {reel.category}
-                    </span>
-                    <h3 className="text-xs font-serif font-medium text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors">
-                      {reel.title}
-                    </h3>
-                  </div>
-
-                  {/* WhatsApp Enquiry Button */}
-                  <button
-                    onClick={() => handleWhatsAppEnquire(reel)}
-                    className="w-full py-1.5 px-2 rounded-lg bg-gradient-to-r from-[#8B5E14] to-[#A87928] hover:from-[#724B0D] hover:to-[#8B5E14] text-white text-[9px] font-serif font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1 cursor-pointer mt-1"
-                  >
-                    <MessageCircle className="w-3 h-3 fill-white" />
-                    <span>Inquire</span>
-                  </button>
-                </div>
-
               </div>
-            );
-          })}
+
+              {/* Details Footer */}
+              <div className="p-3 space-y-1.5 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-[8px] font-serif font-bold tracking-wider text-[#C5A059] uppercase block mb-0.5">
+                    {reel.category}
+                  </span>
+                  <h3 className="text-xs font-serif font-medium text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors">
+                    {reel.title}
+                  </h3>
+                </div>
+
+                {/* WhatsApp Enquiry Button */}
+                <button
+                  onClick={() => handleWhatsAppEnquire(reel)}
+                  className="w-full py-1.5 px-2 rounded-lg bg-gradient-to-r from-[#8B5E14] to-[#A87928] hover:from-[#724B0D] hover:to-[#8B5E14] text-white text-[9px] font-serif font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1 cursor-pointer mt-1"
+                >
+                  <MessageCircle className="w-3 h-3 fill-white" />
+                  <span>Inquire</span>
+                </button>
+              </div>
+
+            </div>
+          ))}
         </div>
 
       </div>
