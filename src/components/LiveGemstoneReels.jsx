@@ -5,10 +5,13 @@ import video11 from '../assets/11R.mp4';
 import video12 from '../assets/12R.mp4';
 import video13 from '../assets/13R.mp4';
 import video14 from '../assets/14r.mp4';
+import rudrakshaVideo from '../assets/Rudraksha/rudraksha_video.mp4';
+
 import ratnaImg from '../assets/Ratna.jpeg';
 import img3R from '../assets/3R.jpeg';
 import img7R from '../assets/7R.jpeg';
 import img9R from '../assets/9R.jpeg';
+import mala4Mukhi from '../assets/Rudraksha/4_mukhi_rudraksha_mala.jpg';
 
 export default function LiveGemstoneReels() {
   const [playingIdx, setPlayingIdx] = useState(null);
@@ -18,6 +21,15 @@ export default function LiveGemstoneReels() {
   const reels = [
     {
       id: 1,
+      title: "Authentic Nepali Rudraksha & Sacred Siddha Japa Mala Motion",
+      tag: "ORIGINAL NEPALI MUKHI",
+      category: "Sacred Rudraksha",
+      videoSrc: rudrakshaVideo,
+      poster: mala4Mukhi,
+      desc: "Live video capture of authentic textured Mukhi Nepali Rudraksha beads strung in sacred red silk with natural auspicious Mukhi clefts.",
+    },
+    {
+      id: 2,
       title: "Raw Amethyst Geode & Multi-Chakra Gemstone Bead Luster",
       tag: "100% NATURAL UNHEATED",
       category: "Healing Energy Stones",
@@ -26,7 +38,7 @@ export default function LiveGemstoneReels() {
       desc: "Watch the genuine natural color zoning, clarity and deep celestial purple hues of authentic Brazilian Amethyst and energized Chakra crystals.",
     },
     {
-      id: 2,
+      id: 3,
       title: "Natural Green Fluorite & Jade Luminous Crystal Motion",
       tag: "HIGH CLARITY GRADE",
       category: "Heart Chakra Stones",
@@ -35,7 +47,7 @@ export default function LiveGemstoneReels() {
       desc: "Observe the soothing translucent green light transmission and precision spherical polishing under pure white studio lighting.",
     },
     {
-      id: 3,
+      id: 4,
       title: "Pure Diamond-Cut Sphatik & Clear Quartz Brilliance",
       tag: "VEDIC ENERGIZED",
       category: "Pure Quartz Mala",
@@ -44,7 +56,7 @@ export default function LiveGemstoneReels() {
       desc: "Experience the cool, crystalline purity and optical clarity of genuine Himalayan Sphatik beads crafted for Japa meditation.",
     },
     {
-      id: 4,
+      id: 5,
       title: "Royal Lapis Lazuli & Golden Pyrite Inclusions Showcase",
       tag: "PYRITE GOLD SPECKS",
       category: "Third-Eye Wisdom",
@@ -95,14 +107,14 @@ export default function LiveGemstoneReels() {
               </span>
               <span className="inline-flex items-center gap-1 text-[9px] px-2.5 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-200 font-serif rounded-full font-bold">
                 <Sparkles className="w-3 h-3 text-amber-300" />
-                Raw Gemstone Luster In Motion
+                Raw Gemstone & Rudraksha Luster In Motion
               </span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-serif font-light text-white tracking-tight">
-              Experience Natural Ratnas & Crystals in Motion
+              Experience Natural Rudraksha & Ratnas in Motion
             </h2>
             <p className="text-xs sm:text-sm text-stone-300 font-serif italic mt-1.5 max-w-2xl">
-              Real high-definition video captures of our certified gemstones, raw geode crystals, and handcrafted healing malas directly from our Bhopal atelier.
+              Real high-definition video captures of our certified Nepali Rudraksha beads, healing crystal bracelets, and raw geode crystals directly from our Bhopal atelier.
             </p>
           </div>
 
@@ -118,8 +130,8 @@ export default function LiveGemstoneReels() {
           </div>
         </div>
 
-        {/* 4 Video Reels Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 5 Video Reels Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {reels.map((reel, idx) => {
             const isCurrentPlaying = playingIdx === idx;
 
@@ -128,7 +140,7 @@ export default function LiveGemstoneReels() {
                 key={reel.id}
                 className="bg-[#201B17] border border-amber-800/30 rounded-3xl overflow-hidden shadow-xl hover:border-[#C5A059] transition-all duration-500 group flex flex-col justify-between"
               >
-                {/* Video Media Container (Aspect 9:16 portrait reel style) */}
+                {/* Video Media Container (Aspect 9:14 portrait reel style) */}
                 <div 
                   className="w-full aspect-[9/14] bg-stone-950 relative overflow-hidden cursor-pointer"
                   onClick={() => togglePlay(idx)}
@@ -157,36 +169,36 @@ export default function LiveGemstoneReels() {
                   {/* Play / Pause Center Overlay Button */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/10 transition-colors">
                     <button
-                      className={`w-14 h-14 rounded-full bg-[#8B5E14]/90 hover:bg-[#8B5E14] text-white flex items-center justify-center backdrop-blur-md border border-amber-400/40 shadow-2xl transition-all transform group-hover:scale-110 cursor-pointer ${
+                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#8B5E14]/90 hover:bg-[#8B5E14] text-white flex items-center justify-center backdrop-blur-md border border-amber-400/40 shadow-2xl transition-all transform group-hover:scale-110 cursor-pointer ${
                         isCurrentPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-90'
                       }`}
                       aria-label={isCurrentPlaying ? "Pause Video" : "Play Video"}
                     >
                       {isCurrentPlaying ? (
-                        <Pause className="w-6 h-6 fill-white" />
+                        <Pause className="w-5 h-5 sm:w-6 sm:h-6 fill-white" />
                       ) : (
-                        <Play className="w-6 h-6 fill-white ml-0.5" />
+                        <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-white ml-0.5" />
                       )}
                     </button>
                   </div>
 
                   {/* Bottom Hint */}
-                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] text-amber-100/80 font-serif bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-lg">
+                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[9px] text-amber-100/80 font-serif bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-lg">
                     <span>Click to {isCurrentPlaying ? 'Pause' : 'Play'}</span>
-                    <Eye className="w-3.5 h-3.5 text-amber-300" />
+                    <Eye className="w-3 h-3 text-amber-300" />
                   </div>
                 </div>
 
                 {/* Details Footer */}
-                <div className="p-4 space-y-2.5 flex-1 flex flex-col justify-between">
+                <div className="p-3.5 space-y-2 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] font-serif font-bold tracking-wider text-[#C5A059] uppercase block mb-1">
+                    <span className="text-[9px] font-serif font-bold tracking-wider text-[#C5A059] uppercase block mb-1">
                       {reel.category}
                     </span>
-                    <h3 className="text-sm font-serif font-medium text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-xs sm:text-sm font-serif font-medium text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors">
                       {reel.title}
                     </h3>
-                    <p className="text-[11px] text-stone-400 font-serif line-clamp-2 mt-1 leading-relaxed">
+                    <p className="text-[10px] text-stone-400 font-serif line-clamp-2 mt-1 leading-relaxed">
                       {reel.desc}
                     </p>
                   </div>
@@ -194,7 +206,7 @@ export default function LiveGemstoneReels() {
                   {/* WhatsApp Enquiry Button */}
                   <button
                     onClick={() => handleWhatsAppEnquire(reel)}
-                    className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#8B5E14] to-[#A87928] hover:from-[#724B0D] hover:to-[#8B5E14] text-white text-[11px] font-serif font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+                    className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#8B5E14] to-[#A87928] hover:from-[#724B0D] hover:to-[#8B5E14] text-white text-[10px] font-serif font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer mt-1.5"
                   >
                     <MessageCircle className="w-3.5 h-3.5 fill-white" />
                     <span>Inquire Showroom Piece</span>

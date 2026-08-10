@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Images
+// Images - Gemstone & Crystal Bracelets
 import ratnaImg from '../assets/Ratna.jpeg';
 import img2R from '../assets/2R.jpeg';
 import img3R from '../assets/3R.jpeg';
@@ -12,6 +12,12 @@ import img8R from '../assets/8R.jpeg';
 import img9R from '../assets/9R.jpeg';
 import img10R from '../assets/10R.jpeg';
 
+// Images - Authentic Real Rudraksha
+import rudraksha3Mukhi from '../assets/Rudraksha/3_mukhi_rudraksha.jpg';
+import rudraksha5Mukhi from '../assets/Rudraksha/5_mukhi_rudraksha.jpg';
+import rudrakshaMala4Mukhi from '../assets/Rudraksha/4_mukhi_rudraksha_mala.jpg';
+
+// Reference & Catalogue Assets
 import gemstoneRef from '../assets/gemstone_cat_reference.png';
 import rudrakshaRef from '../assets/rudraksha_cat_reference.png';
 import braceletsRef from '../assets/bracelets_cat_reference.png';
@@ -20,23 +26,49 @@ import ringsRef from '../assets/rings_cat_reference.png';
 import crystalProductsRef from '../assets/crystal_products_cat_reference.png';
 import emeraldNecklace from '../assets/emerald_necklace.png';
 import rubyChoker from '../assets/ruby_choker.png';
-import antiqueOm from '../assets/AntiqueOm.jpeg';
-import rakhi2 from '../assets/2.jpeg';
-import rakhi3 from '../assets/3.jpeg';
-import lionRakhi from '../assets/Lion.jpeg';
-import deviRakhi from '../assets/Devi.jpeg';
-import rakhi6 from '../assets/6.jpeg';
-
-// Videos
-import video11 from '../assets/11R.mp4';
-import video12 from '../assets/12R.mp4';
-import video13 from '../assets/13R.mp4';
-import video14 from '../assets/14r.mp4';
 
 const ProductContext = createContext();
 
 const DEFAULT_PRODUCTS = [
-  // --- 1. NEWLY ADDED REAL HEALING GEMSTONES & CRYSTAL BRACELETS ---
+  // --- 1. AUTHENTIC REAL NEPALI RUDRAKSHA ---
+  {
+    id: 'rud-real-1',
+    name: 'Authentic 3 Mukhi Nepali Rudraksha (Agni Dev Blessings)',
+    category: 'Rudraksha',
+    discount: '100% ORIGINAL NEPALI',
+    code: 'RUD-03M-NEP',
+    description: 'Genuine 3 Mukhi Nepali Rudraksha bead representing Agni Dev and Mangal Graha. Destroys past karmic debts and instills supreme confidence and energy.',
+    image: rudraksha3Mukhi,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'rud-real-2',
+    name: 'Original 5 Mukhi Collector Nepali Rudraksha (Lord Shiva)',
+    category: 'Rudraksha',
+    discount: 'VEDIC LAB CERTIFIED',
+    code: 'RUD-05M-COL',
+    description: 'High-grade large authentic 5 Mukhi Nepali Rudraksha blessed by Lord Kalagni Rudra. Purifies mind, bestows inner peace and controls blood pressure.',
+    image: rudraksha5Mukhi,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+  {
+    id: 'rud-real-3',
+    name: 'Sacred 108+1 Beads 4 Mukhi / 5 Mukhi Nepali Rudraksha Japa Mala',
+    category: 'Mala',
+    discount: 'PRANA PRATISHTHA',
+    code: 'MAL-04M-108',
+    description: 'Handcrafted authentic 108 beads Nepali Rudraksha meditation rosary knotted in sacred red silk thread with traditional Sumeru bead.',
+    image: rudrakshaMala4Mukhi,
+    isFeatured: true,
+    isNewArrival: true,
+    isBestSeller: true,
+  },
+
+  // --- 2. AUTHENTIC REAL HEALING GEMSTONES & CRYSTAL BRACELETS ---
   {
     id: 'gem-real-1',
     name: 'Pure Natural Sphatik (Clear Quartz) Aura Balancing Bracelet',
@@ -158,7 +190,7 @@ const DEFAULT_PRODUCTS = [
     isBestSeller: true,
   },
 
-  // --- 2. PRECIOUS VEDIC GEMSTONES (RATNAS) ---
+  // --- 3. PRECIOUS VEDIC GEMSTONES (RATNAS) ---
   {
     id: 'gem-1',
     name: 'Certified Ceylon Yellow Sapphire (Pukhraj) 5.25 Ratti',
@@ -208,10 +240,10 @@ const DEFAULT_PRODUCTS = [
     isBestSeller: true,
   },
 
-  // --- 3. SACRED RUDRAKSHA ---
+  // --- 4. SACRED RUDRAKSHA & JAPA MALAS ---
   {
     id: 'rud-1',
-    name: 'Original 1 Mukhi Half Moon Nepali Rudraksha',
+    name: 'Original 1 Mukhi Half Moon Nepali Rudraksha in Silver',
     category: 'Rudraksha',
     discount: 'AUTHENTIC NEPALI',
     code: 'RUD-01M-01',
@@ -222,20 +254,6 @@ const DEFAULT_PRODUCTS = [
     isBestSeller: true,
   },
   {
-    id: 'rud-2',
-    name: 'Nepali 1 to 14 Mukhi Sarva Siddha Mala in Silver',
-    category: 'Rudraksha',
-    discount: 'SARVA SIDDHA',
-    code: 'RUD-SID-02',
-    description: 'Supreme auspicious combination of 1 to 14 Mukhi Nepali beads strung in pure 925 sterling silver caps.',
-    image: rudrakshaRef,
-    isFeatured: true,
-    isNewArrival: false,
-    isBestSeller: true,
-  },
-
-  // --- 4. SACRED JAPA MALAS ---
-  {
     id: 'mal-1',
     name: '108+1 Beads Natural Pure Sphatik (Quartz) Japa Mala',
     category: 'Mala',
@@ -245,18 +263,6 @@ const DEFAULT_PRODUCTS = [
     image: malaRef,
     isFeatured: true,
     isNewArrival: true,
-    isBestSeller: true,
-  },
-  {
-    id: 'mal-2',
-    name: 'Original 5 Mukhi Nepali Rudraksha Japa Rosary (108 Beads)',
-    category: 'Mala',
-    discount: 'PRANA PRATISHTHA',
-    code: 'MAL-RUD-02',
-    description: 'Vedic sanctified 5 Mukhi Nepali Rudraksha mala tied in silk thread with auspicious tassel.',
-    image: malaRef,
-    isFeatured: true,
-    isNewArrival: false,
     isBestSeller: true,
   },
 
@@ -316,7 +322,7 @@ const DEFAULT_PRODUCTS = [
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState(() => {
     try {
-      const saved = localStorage.getItem('amrapali_products_v4');
+      const saved = localStorage.getItem('amrapali_products_v5');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -331,7 +337,7 @@ export function ProductProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('amrapali_products_v4', JSON.stringify(products));
+      localStorage.setItem('amrapali_products_v5', JSON.stringify(products));
     } catch (err) {
       console.error('Failed to save products to localStorage', err);
     }
@@ -365,7 +371,7 @@ export function ProductProvider({ children }) {
 
   const resetCatalog = () => {
     setProducts(DEFAULT_PRODUCTS);
-    localStorage.removeItem('amrapali_products_v3');
+    localStorage.removeItem('amrapali_products_v5');
   };
 
   return (
